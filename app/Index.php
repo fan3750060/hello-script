@@ -50,45 +50,45 @@ class Index
 	{
 		/********* 查询 ************/
 		//find查询
-		// $a = DB::table('testuser')->find();
-		// var_dump($a);
+		// $result = DB::table('testuser')->find();
+		// var_dump($result);
 		
 		//调试模式
 		// $where = [];
-		// $a = DB::table('testuser')->where($where)->debug()->find(); //返回sql
+		// $result = DB::table('testuser')->where($where)->debug()->find(); //返回sql
 
 		//join连表查询
 		// $where = [];
-		// $a = DB::table('testuser')->alias('a')->join('apidoc b','a.id = b.docid','left')->join('apilist c','b.docid = c.apiid','left')->where($where)->find();//两表
+		// $result = DB::table('testuser')->alias('a')->join('apidoc b','a.id = b.docid','left')->where($where)->find();//两表
 		// $join = [
 		// 	['apidoc b','a.id = b.docid','left'],
 		// 	['apilist c','b.docid = c.apiid','left'],
 		// ];
-		// $a = DB::table('testuser')->alias('a')->join($join)->find(); //三表查询
+		// $result = DB::table('testuser')->alias('a')->join($join)->find(); //三表查询
 
-		//union查询
+		// union查询
 		// $union = array(
 		// 	'select * from testuser',
 		// 	'select * from testuser',
 		// );
-		// $a = DB::table('testuser')->alias('a')->union($union)->find(); //多表联合
+		// $result = DB::table('testuser')->alias('a')->union($union)->find(); //多表联合
 
-		//select查询
+		// select查询
 		// $where = array();
 		// $where['sex']  =  1;
 		// $order = array();
 		// $order['id']  = 'desc';
 		// $order['sex'] = 'asc';
-		// $limit = array(0,10);
+		// $limit = [0,10];
 		// $group = ['id','sex'];
-		// $a = DB::table('testuser')->where($where)->limit($limit)->select();
+		// $result = DB::table('testuser')->where($where)->limit($limit)->select();
 
 		/********* 插入数据 ************/
 		// $data = array();
 		// $data['name'] = 'update33233';
 		// $data['sex']  = 1;
-		// $a = DB::table('testuser')->insert($data);
-		// var_dump($a);die;
+		// $result = DB::table('testuser')->insert($data);
+		// var_dump($result);die;
 
 		/********* 更新及事务 ************/
 		// $data = array();
@@ -100,38 +100,41 @@ class Index
 		// $bbb[] = $data;
 
 		// DB::Transaction();//开启事务
-		// $a = DB::table('testuser')->update($bbb); 
-		// if($a)
+		// $result = DB::table('testuser')->update($bbb); 
+		// if($result)
 		// {
 		// 	DB::Commit();
 		// }else{
 		// 	DB::Rollback();
 		// }
-		// var_dump($a);die;
+		// var_dump($result);die;
 
 		/********* 删除 ************/
-		// $a = DB::table('testuser')->delete(8);
-		// var_dump($a);die;
+		// $result = DB::table('表名')->delete(主键id); //根据主键id删除
+
+		// $where = [];
+		// $where['id'] = 1;
+		// $result = DB::table('表名')->where($where)->delete(); //根据条件删除
 		
 		/********* 文件缓存 Cache::drive()默认为file缓存************/
-		// $a = Cache::drive()->set('thasda',array(1,2,3),10);
-		// $b = Cache::drive()->get('thasda');
-		// $c = Cache::drive()->has('thasda');
-		// $d = Cache::drive()->delete('thasda');
+		// $a = Cache::drive()->set('key',array(1,2,3),10);
+		// $b = Cache::drive()->get('key');
+		// $c = Cache::drive()->has('key');
+		// $d = Cache::drive()->delete('key');
 		// var_dump($a,$b,$c,$d);die;
 
 		/********* memcache缓存 ************/
-		// $a = Cache::drive('memcache')->set('thasda',array(1,2,3),30);
-		// $b = Cache::drive('memcache')->get('thasda');
-		// $c = Cache::drive('memcache')->has('thasda');
-		// $d = Cache::drive('memcache')->delete('thasda');
+		// $a = Cache::drive('memcache')->set('key',array(1,2,3),30);
+		// $b = Cache::drive('memcache')->get('key');
+		// $c = Cache::drive('memcache')->has('key');
+		// $d = Cache::drive('memcache')->delete('key');
 		// var_dump($a,$b,$c,$d);die;
 		
 		/********* redis缓存 ************/
-		// $a = Cache::drive('redis')->set('thasda',array(array('a'=>123),2,3),30);
-		// $b = Cache::drive('redis')->get('thasda');
-		// $c = Cache::drive('redis')->has('thasda');
-		// $d = Cache::drive('redis')->delete('thasda');
+		// $a = Cache::drive('redis')->set('key',array(array('a'=>123),2,3),30);
+		// $b = Cache::drive('redis')->get('key');
+		// $c = Cache::drive('redis')->has('key');
+		// $d = Cache::drive('redis')->delete('key');
 		// var_dump($a,$b,$c,$d);die;
 		
 		/********* input方法 ************/
