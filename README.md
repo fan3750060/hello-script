@@ -19,7 +19,7 @@ Example: php script Index/run param1 param2 param3 ...
 Version: 0.2.1
 Author : fan3750060@163.com
 
-
+~~~
 目录结构
 |--app								程序目录
 │---... 						(自定义脚本)
@@ -52,6 +52,7 @@ Author : fan3750060@163.com
 |--runtime 						框架运行时目录
 │---... 						(可配置缓存储存点)
 |--script 							脚本入口文件
+~~~
 
 运行说明
 	php script 控制器/方法 参数1 参数2 参数3
