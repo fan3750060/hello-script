@@ -1,5 +1,6 @@
 # hello-script
 PHP 多进程脚本框架
+===============
 
 安装
 	git clone https://github.com/fan3750060/hello-script.git
@@ -54,14 +55,15 @@ Author : fan3750060@163.com
 │---... 						(可配置缓存储存点)
 |--script 						脚本入口文件
 ~~~
-
+~~~
 运行说明
 	php script 控制器/方法 参数1 参数2 参数3
 
 	PS: 
 		控制器必须在app目录下建立,控制器文件名须与类名一致
 		命令参数使用函数 input() 接收
-
+~~~
+~~~
 多进程控制
 	use core\Work;
 
@@ -89,7 +91,9 @@ Author : fan3750060@163.com
 		controller   脚本控制器
 		action       脚本执行方法
 		param        脚本传输参数
+~~~
 
+~~~
 单进程控制
 	public function run($param=null)
 	{
@@ -98,7 +102,8 @@ Author : fan3750060@163.com
 
 	执行命令:
 		php script Index/run
-
+~~~
+~~~
 DB操作示例
 	
 	use core\query\DB;
@@ -178,8 +183,8 @@ DB操作示例
 		$where = [];
 		$where['id'] = 1;
 		$result = DB::table('表名')->where($where)->delete(); //根据条件删除
-
-
+~~~
+~~~
 缓存操作
 	Cache::drive() 默认为file缓存
 	
@@ -205,7 +210,9 @@ DB操作示例
 		$b = Cache::drive('redis')->get('key');
 		$c = Cache::drive('redis')->has('key');
 		$d = Cache::drive('redis')->delete('key');
+~~~
 
+~~~
 命令行参数接收
 	命令:
 		php script Index/process 213 123 2312
@@ -214,11 +221,15 @@ DB操作示例
 		input()
 
 	var_dump(input()); //返回数组
+~~~
 
+~~~
 config方法
 	$a = config(); //获取全部配置
 	$b = config('cache'); //根据keyh获取配置
+~~~
 
+~~~
 其他:
 
 	session操作方法(将来或将弃用)
@@ -252,6 +263,7 @@ config方法
 		 $e = cookie('key','');
 		 $f = cookie('key',null);
 	}
+~~~
 
 PS:
 	数据操作类及缓存类有借鉴TP操作方式
