@@ -23,37 +23,37 @@ Author : fan3750060@163.com
 
 ~~~
 目录结构
-|--app							程序目录
-│---... 						(自定义脚本)
-|--config 						配置目录
-│---config.php 					一般配置文件
-│---database.php 				数据库配置文件
-|--core							框架核心目录
-│---db							数据操作目录
+|--app					程序目录
+│---... 				(自定义脚本)
+|--config 				配置目录
+│---config.php 				一般配置文件
+│---database.php 			数据库配置文件
+|--core					框架核心目录
+│---db					数据操作目录
 │-------FileCache.php 			文件缓存操作类
 │-------Memcache.php 			Memcache操作类
-│-------Mypdo.php 				Mysql操作类
-│-------Redis.php 				Redis操作类
-│---filter						参数过滤目录(未来弃用)
-│-------Filter.php 				参数过滤类
-│---lib							类库目录
-│-------Cache.php 				缓存操作类
+│-------Mypdo.php 			Mysql操作类
+│-------Redis.php 			Redis操作类
+│---filter				参数过滤目录(未来弃用)
+│-------Filter.php 			参数过滤类
+│---lib					类库目录
+│-------Cache.php 			缓存操作类
 │-------Cookie.php  			Cookie操作类(未来考虑弃用)
 │-------Respones.php 			输出类(未来弃用)
-│-------Session.php          	Session操作类(未来考虑弃用)
-│---query 						数据执行操作类库
-│-------DB.php 					sql快捷操作类
-│---App.php 					框架运行文件
-│---Base.php 					框架基础文件
-│---Common.php 					函数助手公共方法文件
-│---Config.php 					框架配置文件
-│---Loader.php 					框架自动加载文件
-│---Route.php 					框架路由文件
-│---Test.php 					框架版本(测试运行)文件
-│---Work.php 					框架多进程文件
-|--runtime 						框架运行时目录
-│---... 						(可配置缓存储存点)
-|--script 						脚本入口文件
+│-------Session.php          		Session操作类(未来考虑弃用)
+│---query 				数据执行操作类库
+│-------DB.php 				sql快捷操作类
+│---App.php 				框架运行文件
+│---Base.php 				框架基础文件
+│---Common.php 				函数助手公共方法文件
+│---Config.php 				框架配置文件
+│---Loader.php 				框架自动加载文件
+│---Route.php 				框架路由文件
+│---Test.php 				框架版本(测试运行)文件
+│---Work.php 				框架多进程文件
+|--runtime 				框架运行时目录
+│---... 				(可配置缓存储存点)
+|--script 				脚本入口文件
 ~~~
 ~~~
 运行说明
