@@ -22,9 +22,9 @@ Author : fan3750060@163.com
 
 ~~~
 目录结构
-|--app								程序目录
+|--app							程序目录
 │---... 						(自定义脚本)
-|--config 							配置目录
+|--config 						配置目录
 │---config.php 					一般配置文件
 │---database.php 				数据库配置文件
 |--core							框架核心目录
@@ -52,7 +52,7 @@ Author : fan3750060@163.com
 │---Work.php 					框架多进程文件
 |--runtime 						框架运行时目录
 │---... 						(可配置缓存储存点)
-|--script 							脚本入口文件
+|--script 						脚本入口文件
 ~~~
 
 运行说明
