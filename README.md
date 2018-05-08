@@ -115,7 +115,11 @@ DB操作示例
 
 	join连表查询
 		$where = [];
-		$result = DB::table('表名1')->alias('a')->join('表名2 b','a.id = b.docid','left')->where($where)->find();//两表查询
+		$result = DB::table('表名1')
+				->alias('a')
+				->join('表名2 b','a.id = b.docid','left')
+				->where($where)
+				->find();//两表查询
 
 		$join = [
 			['表名2 b','a.id = b.docid','left'],
