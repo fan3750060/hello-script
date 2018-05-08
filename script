@@ -1,5 +1,4 @@
 <?php
-
 //脚本参数
 defined('ARGV') or define('ARGV',json_encode($argv));
 
