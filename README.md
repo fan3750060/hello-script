@@ -1,12 +1,12 @@
-# hello-script
+hello-script
 PHP 多进程脚本框架
 ===============
 
 # 安装
 	git clone https://github.com/fan3750060/hello-script.git
-	
-~~~
-运行命令
+
+
+# 运行命令
 	php script
 
 ╔╗╔╗ ╔╦╗  ╔══╗   ╔╗　　　　　
@@ -20,10 +20,11 @@ When you want to execute a script, be sure to have parameters and use '/' split 
 Example: php script Index/run param1 param2 param3 ...
 Version: 0.2.1
 Author : fan3750060@163.com
-~~~
 
+
+
+# 目录结构
 ~~~
-目录结构
 |--app					程序目录
 │---... 				(自定义脚本)
 |--config 				配置目录
@@ -56,16 +57,18 @@ Author : fan3750060@163.com
 │---... 				(可配置缓存储存点)
 |--script 				脚本入口文件
 ~~~
+
+# 运行说明
 ~~~
-运行说明
 	php script 控制器/方法 参数1 参数2 参数3
 
 	PS: 
 		控制器必须在app目录下建立,控制器文件名须与类名一致
 		命令参数使用函数 input() 接收
 ~~~
+
+# 多进程控制
 ~~~
-多进程控制
 	use core\Work;
 
 	public function process()
@@ -92,10 +95,13 @@ Author : fan3750060@163.com
 		controller   脚本控制器
 		action       脚本执行方法
 		param        脚本传输参数
+
+		windows系统下不支持
 ~~~
 
+
+# 单进程控制
 ~~~
-单进程控制
 	public function run($param=null)
 	{
 		Do something...
@@ -104,8 +110,9 @@ Author : fan3750060@163.com
 	执行命令:
 		php script Index/run
 ~~~
+
+# DB操作示例
 ~~~
-DB操作示例
 	
 	use core\query\DB;
 	
@@ -185,8 +192,9 @@ DB操作示例
 		$where['id'] = 1;
 		$result = DB::table('表名')->where($where)->delete(); //根据条件删除
 ~~~
+
+# 缓存操作
 ~~~
-缓存操作
 	Cache::drive() 默认为file缓存
 	
 	set: 	设置缓存 参数1:缓存键名 参数2:数据 参数3:持续时间缓存值将过期的秒数,0表示永不过期
@@ -213,8 +221,9 @@ DB操作示例
 		$d = Cache::drive('redis')->delete('key');
 ~~~
 
+
+# 命令行参数接收
 ~~~
-命令行参数接收
 	命令:
 		php script Index/process 213 123 2312
 	
@@ -230,9 +239,9 @@ config方法
 	$b = config('cache'); //根据keyh获取配置
 ~~~
 
-~~~
-其他:
 
+# 其他
+~~~
 	session操作方法(将来或将弃用)
 		$a = Session::boot()->set('key',[1,2,3]);
 		$b = Session::boot()->get('key');
