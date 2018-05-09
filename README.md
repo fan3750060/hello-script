@@ -1,6 +1,5 @@
 hello-script
 PHP 多进程脚本框架
-===============
 
 # 安装
 	git clone https://github.com/fan3750060/hello-script.git
