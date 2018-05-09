@@ -233,8 +233,9 @@ Author : fan3750060@163.com
 	var_dump(input()); //返回数组
 ~~~
 
+
+# 读取配置文件
 ~~~
-config方法
 	$a = config(); //获取全部配置
 	$b = config('cache'); //根据keyh获取配置
 ~~~
