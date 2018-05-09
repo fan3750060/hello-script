@@ -121,7 +121,7 @@ Author : fan3750060@163.com
 
 		PS: 库名非必填,默认数据库在 database.php 的 database 中配置
 
-	find查询
+	单条查询
 		$result = DB::table('表名')->find();
 
 	调试模式
@@ -149,7 +149,7 @@ Author : fan3750060@163.com
 		);
 		$result = DB::table('表3')->alias('a')->union($union)->find(); //多表联合
 
-	select查询
+	多条查询
 		$where = array();
 		$where['sex']  =  1;
 
