@@ -1,4 +1,4 @@
-#hello-script
+# hello-script
 PHP 多进程脚本框架
 =====
 
@@ -8,7 +8,7 @@ PHP 多进程脚本框架
 
 # 运行命令
 	php script
-
+~~~
 ╔╗╔╗ ╔╦╗  ╔══╗   ╔╗　　　　　
 ║╚╝╠═╣║╠═╗║══╬═╦╦╬╬═╦══╗
 ║╔╗║╩╣║║║║╠══║╠╣╔╣║║╠╗╔╝
@@ -20,7 +20,7 @@ When you want to execute a script, be sure to have parameters and use '/' split 
 Example: php script Index/run param1 param2 param3 ...
 Version: 0.2.1
 Author : fan3750060@163.com
-
+~~~
 
 
 # 目录结构
