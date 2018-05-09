@@ -9,15 +9,22 @@ class Route{
         $param = json_decode(ARGV,true);
         if(isset($param[1]))
         {
-            if(strpos($param[1],'/') !== false)
+            if($param[1] == '--list')
             {
-                $param = explode('/', $param[1]);
-                $controller = $param[0];
-                $action = $param[1];
+                $controller = 'Help';
+                $action = 'scriptlist';
+                $namespaceclass = '\core\\'.$controller;
             }else{
-                die('['.date('Y-m-d H:i:s').']：param ' . $param[1] . ' error! Make sure to use / split controller and method!'.PHP_EOL);
+                if(strpos($param[1],'/') !== false)
+                {
+                    $param = explode('/', $param[1]);
+                    $controller = $param[0];
+                    $action = $param[1];
+                }else{
+                    die('['.date('Y-m-d H:i:s').']：param ' . $param[1] . ' error! Make sure to use / split controller and method!'.PHP_EOL);
+                }
+                 $namespaceclass = '\app\\'.$controller;
             }
-            $namespaceclass = '\app\\'.$controller;
         }else{
             $controller = 'Test';
             $action = 'run';

@@ -240,6 +240,12 @@ Author : fan3750060@163.com
 	$b = config('cache'); //根据keyh获取配置
 ~~~
 
+# 运行输出
+	echolog(); //可打印数组 
+
+# 帮助命令
+	列出app中脚本: php script --list 
+
 
 # 其他
 ~~~

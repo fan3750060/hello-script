@@ -108,3 +108,26 @@ if (!function_exists('cookie'))
         }
     }
 }
+
+if (!function_exists('echolog'))
+{
+    /**
+     * [echolog]
+     * ------------------------------------------------------------------------------
+     * @author  by.fan <fan3750060@163.com>
+     * ------------------------------------------------------------------------------
+     * @version date:2018-01-05
+     * ------------------------------------------------------------------------------
+     * @param   string          $string   [内容]
+     * @return  [type]                 [description]
+     */
+    function echolog($string = null)
+    {
+        if(!$string) return false;
+        if(is_array($string))
+        {
+            $string = PHP_EOL.var_export($string,TRUE);
+        }
+        echo PHP_EOL.'['.date('Y-m-d H:i:s').']：'.$string;
+    }
+}
