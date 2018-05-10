@@ -1,0 +1,23 @@
+{
+    "name": "hello-script",
+    "description": "PHP 多进程脚本框架",
+    "type": "project",
+    "keywords": [
+        "framework",
+        "Script"
+    ],
+    "homepage": "https://github.com/fan3750060/hello-script",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "fan",
+            "email": "fan3750060@163.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "core\\": "core"
+        }
+    }
+}

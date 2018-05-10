@@ -8,8 +8,11 @@ defined('CORE_PATH') or define('CORE_PATH', __DIR__.'/../core');
 defined('ROOT_SCRIPT') or define('ROOT_SCRIPT', __DIR__.'/../'); 
 
 //载入Loader类
-require 'Loader.php';
-spl_autoload_register('Loader::autoload'); // 注册自动加载
+// require 'Loader.php';
+// spl_autoload_register('Loader::autoload'); // 注册自动加载
+
+//使用composer加载
+require __DIR__.'/../vendor/autoload.php';
 
 use core\App;
 App::run();

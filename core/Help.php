@@ -27,10 +27,10 @@ class Help
 		foreach ($this->files as $key => $value) 
 		{
 			$classname = explode('.', $value)[0];
-			$class = $namespace.DS.$classname;
+			$class = $namespace.'\\'.$classname;
 			foreach (get_class_methods($class) as $k1 => $v1) 
 			{
-				$this->allclassaction[] = PHP_EOL."\t".$classname.'/'.$v1;
+				$this->allclassaction[] = PHP_EOL."\t".$classname.'/'.$v1.PHP_EOL;
 			}
 		}
 
