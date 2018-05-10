@@ -4,8 +4,10 @@
     "type": "project",
     "keywords": [
         "framework",
+        "hello Script",
         "Script"
     ],
+    "version": "0.2.1",
     "homepage": "https://github.com/fan3750060/hello-script",
     "license": "Apache-2.0",
     "authors": [

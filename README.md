@@ -70,24 +70,35 @@ Author : fan3750060@163.com
 
 # 多进程控制
 ~~~
-	use core\Work;
+	多进程依赖php的pcntl扩展,在windows下无法使用
 
-	public function process()
-	{
-		//总进程的数量
-		$totals = 5;
+	安装扩展
+		# 通过pecl安装pcntl扩展
+		sudo pecl install pcntl
+		# 增加 extension=pcntl.so
+		sodo vim /etc/php.ini
+		# 检查扩展是否安装成功
+		php -m | grep pcntl
 
-		// 执行的脚本数量
-		$param = array();
+	代码
+		use core\Work;
 
-		// 执行的脚本数量的数组
-		for ($i = 0; $i < $totals; $i++)
+		public function process()
 		{
-		    $param[] = ['controller' =>'Index','action'=>'run','param'=>['pid'=>$i,'total' => $totals]];
+			//总进程的数量
+			$totals = 5;
+
+			// 执行的脚本数量
+			$param = array();
+
+			// 执行的脚本数量的数组
+			for ($i = 0; $i < $totals; $i++)
+			{
+			    $param[] = ['controller' =>'Index','action'=>'run','param'=>['pid'=>$i,'total' => $totals]];
+			}
+			
+			Work::run($param);
 		}
-		
-		Work::run($param);
-	}
 	
 	执行命令:
 		php script Index/process
