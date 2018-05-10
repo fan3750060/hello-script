@@ -55,6 +55,7 @@ Author : fan3750060@163.com
 │------Work.php 			框架多进程文件
 |--runtime 				框架运行时目录
 │---------... 				(可配置缓存储存点)
+│--vendor                		第三方类库目录（Composer）
 |--script 				脚本入口文件
 ~~~
 
