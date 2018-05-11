@@ -204,6 +204,7 @@ Author : fan3750060@163.com
 
 # 缓存操作
 ~~~
+	use core\lib\Cache;
 	Cache::drive() 默认为file缓存
 	
 	set: 	设置缓存 参数1:缓存键名 参数2:数据 参数3:持续时间缓存值将过期的秒数,0表示永不过期
@@ -258,6 +259,7 @@ Author : fan3750060@163.com
 
 # 其他
 ~~~
+	use core\lib\Session;
 	session操作方法(将来或将弃用)
 		$a = Session::boot()->set('key',[1,2,3]);
 		$b = Session::boot()->get('key');
@@ -273,7 +275,8 @@ Author : fan3750060@163.com
 		$d = session('');
 		$e = session('key','');
 		$f = session('key',null);
-
+		
+	use core\lib\Cookie;
 	cookie方法(将来或将弃用)
 		 $a = Cookie::boot()->set('key',[1,2,3]);
 		 $b = Cookie::boot()->get('key');
