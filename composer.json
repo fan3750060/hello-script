@@ -1,6 +1,6 @@
 {
     "name": "hello-script",
-    "description": "PHP 多进程脚本框架",
+    "description": "PHP 脚本框架",
     "type": "project",
     "keywords": [
         "framework",
