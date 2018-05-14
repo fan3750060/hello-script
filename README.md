@@ -1,5 +1,5 @@
 # Hello-Script
-PHP 多进程脚本框架
+PHP 脚本框架
 =====
 
 # 安装
