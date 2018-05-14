@@ -126,8 +126,8 @@ if (!function_exists('echolog'))
         if(!$string) return false;
         if(is_array($string))
         {
-            $string = PHP_EOL.var_export($string,TRUE);
+            $string = var_export($string,TRUE).PHP_EOL;
         }
-        echo PHP_EOL.'['.date('Y-m-d H:i:s').']：'.$string;
+        echo '['.date('Y-m-d H:i:s').']：'.$string.PHP_EOL;
     }
 }
