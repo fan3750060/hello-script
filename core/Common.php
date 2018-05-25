@@ -123,7 +123,6 @@ if (!function_exists('echolog'))
      */
     function echolog($string = null)
     {
-        if(!$string) return false;
         if(is_array($string))
         {
             $string = var_export($string,TRUE).PHP_EOL;
