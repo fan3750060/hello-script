@@ -130,3 +130,32 @@ if (!function_exists('echolog'))
         echo '['.date('Y-m-d H:i:s').']：'.$string.PHP_EOL;
     }
 }
+
+if (!function_exists('import'))
+{
+    /**
+     * [import 加载第三方类库]
+     * ------------------------------------------------------------------------------
+     * @Autor    by.fan
+     * ------------------------------------------------------------------------------
+     * @DareTime 2017-06-29
+     * ------------------------------------------------------------------------------
+     * @param    [type]     $folder [目录] 多级目录用'/'间隔
+     * @param    [type]     $name   [名称]
+     * @param    [type]     $class  [类]  可不填,不填为引入文件
+     * @return   [type]             [description]
+     *
+     * 加载类库: import('PHPMailer','PHPMailerAutoload','PHPMailer')
+     */
+    function import($folder,$name,$class=null)
+    {
+        //参数处理
+        if(!is_string($name)) return false;
+        $file_path = $folder.'/'.$name.'.php';
+        if(!file_exists($file_path)) return false;
+        require_once($file_path);
+        if(!class_exists($class)) return false;
+        return new $class();//实例化模型
+    }
+}
+

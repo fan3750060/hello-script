@@ -250,6 +250,12 @@ Author : fan3750060@163.com
 	$b = config('cache'); //根据keyh获取配置
 ~~~
 
+# 引入类包
+	import('目录','文件名','类名'); //第三个参数存在返回类对象,不存在引入文件
+	例子:
+		import(VENDOR.'memq','QMC'); //引入文件
+		import(VENDOR.'memq','QMC','QMC'); //返回对象
+
 # 运行输出
 	echolog(); //可打印数组 
 
