@@ -174,7 +174,21 @@ Author : fan3750060@163.com
 		$data = array();
 		$data['name'] = 'update33233';
 		$data['sex']  = 1;
-		$result = DB::table('表名')->insert($data);
+		$result = DB::table('表名')->insert($data); //单条插入(一维数组)
+
+		$data = array();
+		$data = [
+			[
+				'name' => 'update33233',
+				'sex'  => 1,
+			],
+			[
+				'name' => 'update1111',
+				'sex'  => 2,
+			],
+		];
+		$result = DB::table('表名')->insert($data); //批量多条插入(二维数组)
+		
 
 	更新及事务
 		$data = array();
