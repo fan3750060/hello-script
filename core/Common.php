@@ -46,8 +46,12 @@ if (!function_exists('input'))
         $param = json_decode(ARGV,true);
         unset($param[0]);
         unset($param[1]);
-        sort($param);
-        return $param;
+        $array = [];
+        foreach ($param as $key => $value) 
+        {
+            $array[] = $value;
+        }
+        return $array;
     }
 }
 
