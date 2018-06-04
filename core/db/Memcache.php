@@ -363,13 +363,13 @@ class Memcache{
 	}
 	
 	/**
-	 * @Name: 生成md5加密后的唯一键值
+	 * @Name: 
 	 * @param:$key key
 	 * @return : md5 string
 	**/
 	private function key_name($key)
 	{
-		return md5(strtolower($this->PREFIX.$key));
+		return $this->PREFIX.$key;
 	}
 	
 	/**
