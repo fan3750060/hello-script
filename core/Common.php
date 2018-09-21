@@ -163,3 +163,119 @@ if (!function_exists('import'))
     }
 }
 
+if(!function_exists('http_curl'))
+{
+    /**
+     * [http_curl 获取]
+     * ------------------------------------------------------------------------------
+     * @author  by.fan <fan3750060@163.com>
+     * ------------------------------------------------------------------------------
+     * @version date:2018-06-12
+     * ------------------------------------------------------------------------------
+     * @param   [type]          $url [description]
+     * @return  [type]               [description]
+     */
+    function http_curl($param = [])
+    {
+        if(!$param || !$param['url'])
+        {
+            return 'url为必填';
+        }
+
+        // 初始化
+        $ch = curl_init();        
+
+        // 设置浏览器的特定header
+        $header = [
+            "Connection: keep-alive",
+            "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            "Upgrade-Insecure-Requests: 1",
+            "DNT:1",
+            "Accept-Language: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        ];
+
+        if(isset($param['header']) && $param['header'])
+        {
+            $header = $param['header'];
+        }
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$header);
+        
+
+        //访问网页
+        curl_setopt($ch, CURLOPT_URL, $param['url']);
+
+        //浏览器设置
+        $user_agent = 'User-Agent: Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36';
+        if(isset($param['user_agent']) && $param['user_agent'])
+        {
+            $user_agent = $param['user_agent'];
+        }
+
+        curl_setopt($ch, CURLOPT_USERAGENT,$user_agent); 
+
+        if(isset($param['autoreferer']) && $param['autoreferer'])
+        {
+            //重定向
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            //多级自动跳转
+            curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+            //设置跳转location 最多10次
+            curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+        }
+        
+        //来源
+        if(isset($param['referer']) && $param['referer'])
+        {
+            curl_setopt ($ch, CURLOPT_REFERER, $param['referer']);  
+        }
+
+        //cookie设置
+        if (isset($param['cookiepath']) && $param['cookiepath'])
+        {
+            curl_setopt($ch, CURLOPT_COOKIEJAR, $param['cookiepath']); //存储cookies
+            curl_setopt($ch, CURLOPT_COOKIEFILE,$param['cookiepath']); //发送cookie
+        }
+
+        //是否显示头信息
+        if(isset($param['showheader']) && $param['showheader'])
+        {
+            curl_setopt($ch, CURLOPT_HEADER, 1);
+        }
+
+        //是否post提交
+        if(isset($param['data']) && $param['data'])
+        {
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST,'POST');    // 请求方式
+            curl_setopt($ch, CURLOPT_POST, true);    // post提交
+            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param['data']));// post的变量
+        }
+
+        //超时设置
+        $timeout = isset($param['timeout']) && (int)$param['timeout'] ? $param['timeout'] : 30;
+        curl_setopt($ch, CURLOPT_TIMEOUT,$timeout);
+
+        //是否为https请求
+        if(isset($param['https']) && $param['https'])
+        {
+            // 针对https的设置
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+        }
+        
+        //获取内容不直接输出
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // 执行
+        $response = curl_exec($ch);
+
+        //关闭
+        curl_close($ch);
+
+        if (isset($param['returndecode']) && $param['returndecode']) {
+            $response = json_decode($response,true);
+        }
+        
+        return $response;
+    }
+}
+

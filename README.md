@@ -313,6 +313,33 @@ Author : fan3750060@163.com
 		 $e = cookie('key','');
 		 $f = cookie('key',null);
 	}
+
+	http_curl辅助函数
+	
+	$param = [
+		'url' 			=> 'https:xxxxx', 			//地址
+		'header' 		=> [
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+                'Accept-Encoding: gzip, deflate, br',
+                'Accept-Language: zh-CN,zh;q=0.9',
+                'Cache-Control: no-cache',
+            ], 										//头信息(不传为默认)
+        'user_agent' 	=> 'User-Agent: Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36',//浏览器标识(不传为默认)
+        'autoreferer' 	=> true, 					//重定向多级跳转
+        'referer' 		=> 'https:xxx',				//来源
+        'cookiepath' 	=> './coookie.log', 		//发送和储存cookie文件
+        'showheader' 	=> true, 					//是否显示返回头信息
+        'data'			=> [
+				id => 1,
+				name => '张三'
+        ], 											//post参数,get请求在url后拼接
+        'timeout'		=> 30, 						//超时时间
+        'https'			=> true,					//是否开启HTTPS请求
+        'returndecode'	=> false; 					//是否需要json解析, true为解析,false不解析
+
+	];
+
+	http_curl($param);//curl
 ~~~
 
 PS:
