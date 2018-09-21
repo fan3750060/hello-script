@@ -337,7 +337,7 @@ Author : fan3750060@163.com
 		'https'		=> true,		//是否开启HTTPS请求
 		'returndecode'	=> false; 		//是否需要json解析, true为解析,false不解析
 
-		];
+	];
 
 	http_curl($param);//curl
 ~~~
