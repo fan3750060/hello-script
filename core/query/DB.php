@@ -423,6 +423,69 @@ class DB
 	}
 
 	/**
+	 * [count 查询数量]
+	 * ------------------------------------------------------------------------------
+	 * @Autor    by.fan
+	 * ------------------------------------------------------------------------------
+	 * @DareTime 2017-12-12
+	 * ------------------------------------------------------------------------------
+	 * @return   [type]     [description]
+	 */
+	public function count()
+	{
+
+		$strSql = 'SELECT count(1) as count  FROM ';
+
+		if($this->table)
+		{
+			if($this->alias)
+			{
+				$this->table .= ' as '.$this->alias;
+			}
+
+			$strSql.= $this->table.' ';
+		}else{
+			return null;
+		}
+
+		if($this->join)
+		{
+			foreach ($this->join as $k => $v) 
+			{
+				$strSql.= ' '.strtoupper($v['type']).' JOIN '.$v['table'].' ON '.$v['on'];
+			}
+		}
+
+		if($this->strwhere)
+		{
+			$strSql.= $this->strwhere.' ';
+		}
+
+		if($this->strorder)
+		{
+			$strSql.= $this->strorder.' ';
+		}
+
+		if(empty($this->join) && $this->union)
+		{
+			$strSql = '('.$strSql.') UNION ';
+			$union  = array();
+			foreach ($this->union as $k => $v) 
+			{
+				$union[] = '('.$v.')';
+			}
+			$strSql.= implode(' UNION ', $union);
+		}
+
+		if($this->debug)
+		{
+			return $strSql;
+		}
+
+		return (int)self::$Dbquery->query($strSql,'Row')['count'];
+	}
+
+	/**
 	 * [select 查询集合]
 	 * ------------------------------------------------------------------------------
 	 * @Autor    by.fan

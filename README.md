@@ -130,7 +130,12 @@ Author : fan3750060@163.com
 		DB::table('表名','库名')
 
 		PS: 库名非必填,默认数据库在 database.php 的 database 中配置
-
+	
+	数量查询
+		$where = [];
+		$where['type'] = 1;
+		$result = DB::table('表名')->where($where)->count();//返回数量
+		
 	单条查询
 		$result = DB::table('表名')->find();
 
