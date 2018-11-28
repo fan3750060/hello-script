@@ -204,6 +204,16 @@ if(!function_exists('http_curl'))
         //访问网页
         curl_setopt($ch, CURLOPT_URL, $param['url']);
 
+        //代理服务器设置
+        if(isset($param['proxy']) && $param['proxy'])
+        {
+            curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC); //代理认证模式
+            curl_setopt($ch, CURLOPT_PROXY, $param['proxy'][0]); //代理服务器地址
+            curl_setopt($ch, CURLOPT_PROXYPORT,$param['proxy'][1]); //代理服务器端口
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, $param['proxy'][2].":".$param['proxy'][3]); //http代理认证帐号，username:password的格式
+            curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP); //使用SOCKS5代理模式
+        }
+
         //浏览器设置
         $user_agent = 'User-Agent: Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36';
         if(isset($param['user_agent']) && $param['user_agent'])
