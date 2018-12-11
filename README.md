@@ -1,7 +1,6 @@
 # Hello-Script
 PHP 脚本框架
 =====
-学习交流qq群:271818784
 
 # 安装
 	git clone https://github.com/fan3750060/hello-script.git
