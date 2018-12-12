@@ -588,7 +588,12 @@ class DB
 
 			$strSql.= implode(',',$values);
 		}else{
-			$strSql = 'INSERT INTO `'.$this->table.'` (`'.implode('`,`', array_keys($data)).'`) VALUES ("'.implode('","', $data).'")';
+			$strSql = 'INSERT INTO `'.$this->table.'` (`'.implode('`,`', array_keys($data)).'`) VALUES (\''.implode('\',\'', $data).'\')';
+		}
+
+		if($this->debug)
+		{
+			return $strSql;
 		}
 
 		if(self::$Dbquery->execSql($strSql))
@@ -631,6 +636,7 @@ class DB
 			$return = array();
 
 			//循环执行
+			$debugsql = [];
 			foreach ($data as $key => $value) 
 			{
 				$strSql = 'UPDATE ';
@@ -667,9 +673,19 @@ class DB
 					}
 				}
 
-				if(self::$Dbquery->execSql($strSql) === false)
+				if($this->debug)
 				{
-					return false;
+					$debugsql[] = $strSql;
+
+					if($key+1 >= count($data))
+					{
+						return $strSql;
+					}
+				}else{
+					if(self::$Dbquery->execSql($strSql) === false)
+					{
+						return false;
+					}
 				}
 			}
 
@@ -709,6 +725,11 @@ class DB
 				}else{
 					return false;
 				}
+			}
+
+			if($this->debug)
+			{
+				return $strSql;
 			}
 
 			return self::$Dbquery->execSql($strSql);
@@ -755,6 +776,11 @@ class DB
 			}else{
 				return false;
 			}
+		}
+
+		if($this->debug)
+		{
+			return $strSql;
 		}
 
 		return self::$Dbquery->execSql($strSql);
