@@ -194,7 +194,7 @@ if(!function_exists('http_curl'))
             "Accept-Language: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
         ];
 
-        if(isset($param['header']) && $param['header'])
+        if(!empty($param['header']))
         {
             $header = $param['header'];
         }
@@ -205,7 +205,7 @@ if(!function_exists('http_curl'))
         curl_setopt($ch, CURLOPT_URL, $param['url']);
 
         //代理服务器设置
-        if(isset($param['proxy']) && $param['proxy'])
+        if(!empty($param['proxy']))
         {
             curl_setopt($ch, CURLOPT_PROXYAUTH, CURLAUTH_BASIC); //代理认证模式
             curl_setopt($ch, CURLOPT_PROXY, $param['proxy'][0]); //代理服务器地址
@@ -216,14 +216,14 @@ if(!function_exists('http_curl'))
 
         //浏览器设置
         $user_agent = 'User-Agent: Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36';
-        if(isset($param['user_agent']) && $param['user_agent'])
+        if(!empty($param['user_agent']))
         {
             $user_agent = $param['user_agent'];
         }
 
         curl_setopt($ch, CURLOPT_USERAGENT,$user_agent); 
 
-        if(isset($param['autoreferer']) && $param['autoreferer'])
+        if(!empty($param['autoreferer']))
         {
             //重定向
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -234,30 +234,30 @@ if(!function_exists('http_curl'))
         }
         
         //来源
-        if(isset($param['referer']) && $param['referer'])
+        if(!empty($param['referer']))
         {
             curl_setopt ($ch, CURLOPT_REFERER, $param['referer']);  
         }
 
         //cookie设置
-        if (isset($param['cookiepath']) && $param['cookiepath'])
+        if (!empty($param['cookiepath']))
         {
             curl_setopt($ch, CURLOPT_COOKIEJAR, $param['cookiepath']); //存储cookies
             curl_setopt($ch, CURLOPT_COOKIEFILE,$param['cookiepath']); //发送cookie
         }
 
         //是否显示头信息
-        if(isset($param['showheader']) && $param['showheader'])
+        if(!empty($param['showheader']))
         {
             curl_setopt($ch, CURLOPT_HEADER, 1);
         }
 
         //是否post提交
-        if(isset($param['data']) && $param['data'])
+        if(!empty($param['data']))
         {
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST,'POST');    // 请求方式
             curl_setopt($ch, CURLOPT_POST, true);    // post提交
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($param['data']));// post的变量
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $param['data']);// post的变量
         }
 
         //超时设置
@@ -265,7 +265,7 @@ if(!function_exists('http_curl'))
         curl_setopt($ch, CURLOPT_TIMEOUT,$timeout);
 
         //是否为https请求
-        if(isset($param['https']) && $param['https'])
+        if(!empty($param['https']))
         {
             // 针对https的设置
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -281,7 +281,7 @@ if(!function_exists('http_curl'))
         //关闭
         curl_close($ch);
 
-        if (isset($param['returndecode']) && $param['returndecode']) {
+        if (!empty($param['returndecode'])) {
             $response = json_decode($response,true);
         }
         
