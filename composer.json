@@ -1,6 +1,6 @@
 {
     "name": "hello-script",
-    "description": "PHP 脚本框架",
+    "description": "Php-based scripting framework",
     "type": "project",
     "keywords": [
         "framework",
@@ -10,6 +10,9 @@
     "version": "0.2.1",
     "homepage": "https://github.com/fan3750060/hello-script",
     "license": "Apache-2.0",
+    "require": {
+        "php": ">=5.5"
+    },
     "authors": [
         {
             "name": "fan",
