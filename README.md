@@ -3,7 +3,7 @@ PHP 脚本框架
 =====
 
 # 安装
-	composer create-project fan3750060/hello-script
+	composer require "fan3750060/hello-script @dev"
 
 	或
 	
