@@ -3,6 +3,10 @@ PHP 脚本框架
 =====
 
 # 安装
+	composer create-project fan3750060/hello-script
+
+	或
+	
 	git clone https://github.com/fan3750060/hello-script.git
 
 
