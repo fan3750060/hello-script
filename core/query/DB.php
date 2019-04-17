@@ -27,7 +27,7 @@ class DB
 
 	public $debug = false; //调试模式
 
-	private function __construct($table=null,$databaseselection=null)
+	private function __construct($table=null,$databaseselection=null,$dbname = null)
 	{
 		if($table==null && $databaseselection==null)
 		{
@@ -40,6 +40,8 @@ class DB
 			$this->database = $databaseselection ? config($databaseselection) : config('database');
 		}
 		$this->table  = $table;
+
+		$this->database['dbname'] = $dbname ? $dbname : $this->database['dbname'];//自定义库
 
 		//更新时数据库配置
 		self::$update['dbname'] = $this->database['dbname'];
@@ -852,8 +854,8 @@ class DB
 	 * @param    [type]     $table [description]
 	 * @return   [type]            [description]
 	 */
-	public static function table($table=null,$databaseselection=null)
+	public static function table($table=null,$databaseselection=null,$dbname=null)
 	{
-		return new self($table,$databaseselection);
+		return new self($table,$databaseselection,$dbname);
 	}
 }

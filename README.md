@@ -3,6 +3,8 @@ PHP 脚本框架
 =====
 
 # 安装
+	composer create-project fan3750060/hello-script //如果没找到请使用下面方法,保存在vendor中
+
 	composer require "fan3750060/hello-script @dev"
 
 	或
@@ -130,9 +132,10 @@ Author : fan3750060@163.com
 	use core\query\DB;
 	
 	说明
-		DB::table('表名','库名')
+		DB::table('表名','连接名','数据库名')
 
-		PS: 库名非必填,默认数据库在 database.php 的 database 中配置
+		PS: 连接名非必填,默认数据库在 database.php 的 database 中配置
+		PS: 数据库名非必填,默认数据库在 database.php 的 database 中配置 : dbname
 	
 	数量查询
 		$where = [];
