@@ -160,15 +160,34 @@ class DB
 				{
 					if(is_array($value))
 					{
-						$wherearray[] = '('.$key.' '.$value[0].' '.$value[1].')';
-					}else{  
-					    $wherearray[] = $key.' = "'.$value.'"';
+						$value[2] = $this->field_replace($value[2]);
+						$wherearray[] = '(`'.$value[0].'` '.$value[1].' '.$value[2].')';
+					}else{
+						$value = $this->field_replace($value);
+					    $wherearray[] = '`'.$key.'` = '.$value;
 					}  
 				}
 				$this->strwhere = 'where '.implode(' and ', $wherearray);
 			}
 		}
 		return $this;
+	}
+
+	/**
+	 * [field_replace 条件替换过滤]
+	 * ------------------------------------------------------------------------------
+	 * @author  by.fan <fan3750060@163.com>
+	 * ------------------------------------------------------------------------------
+	 * @version date:2019-04-17
+	 * ------------------------------------------------------------------------------
+	 * @return  [type]          [description]
+	 */
+	private function field_replace($value = '')
+	{
+		$value = str_replace("'", "\'", $value);
+		$value = str_replace('"', '\"', $value);
+		$value = is_int($value) ||  is_float($value) ? $value :  '"'.$value.'"';
+		return $value;
 	}
 
 	/**
@@ -585,12 +604,18 @@ class DB
 			$values = array();
 			foreach ($data as $key => $value) 
 			{
-				$values[] = '("'.implode('","', $value).'")';
+				$value = $this->field_replace($value);
+				$values[] = '('.implode(',', $value).')';
 			}
 
 			$strSql.= implode(',',$values);
 		}else{
-			$strSql = 'INSERT INTO `'.$this->table.'` (`'.implode('`,`', array_keys($data)).'`) VALUES (\''.implode('\',\'', $data).'\')';
+			$value = [];
+			foreach ($data as $key => $v) {
+				$value[] = $this->field_replace($v);
+			}
+
+			$strSql = 'INSERT INTO `'.$this->table.'` (`'.implode('`,`', array_keys($data)).'`) VALUES ('.implode(',', $value).')';
 		}
 
 		if($this->debug)
@@ -653,7 +678,8 @@ class DB
 				$param = array();
 				foreach ($value as $k => $v) 
 				{
-					$param[] = ' `'.$k.'` = "'.$v.'"';
+					$v = $this->field_replace($v);
+					$param[] = ' `'.$k.'` = '.$v;
 				}
 
 				$strSql.= implode(',', $param);
@@ -706,7 +732,8 @@ class DB
 			$param = array();
 			foreach ($data as $k => $v) 
 			{
-				$param[] = ' `'.$k.'` = "'.$v.'"';
+				$v = $this->field_replace($v);
+				$param[] = ' `'.$k.'` = '.$v;
 			}
 
 			$strSql.= implode(',', $param);
@@ -761,7 +788,7 @@ class DB
 
 		if($this->strwhere)
 		{
-			$strSql.= $this->strwhere.' ';
+			$strSql.= ' '.$this->strwhere.' ';
 		}else{
 
 			if(!$data) return false;
