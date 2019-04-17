@@ -399,7 +399,7 @@ class DB
 				$this->table .= ' as '.$this->alias;
 			}
 
-			$strSql.= $this->table.' ';
+			$strSql.= '`'.$this->table.'` ';
 		}else{
 			return null;
 		}
@@ -464,7 +464,7 @@ class DB
 				$this->table .= ' as '.$this->alias;
 			}
 
-			$strSql.= $this->table.' ';
+			$strSql.= '`'.$this->table.'` ';
 		}else{
 			return null;
 		}
@@ -531,7 +531,7 @@ class DB
 				$this->table .= ' as '.$this->alias;
 			}
 
-			$strSql.= $this->table.' ';
+			$strSql.= '`'.$this->table.'` ';
 		}else{
 			return false;
 		}
@@ -670,7 +670,7 @@ class DB
 
 				if($this->table)
 				{
-					$strSql.= $this->table.' SET ';
+					$strSql.= '`'.$this->table.'` SET ';
 				}else{
 					return false;
 				}
@@ -724,7 +724,7 @@ class DB
 
 			if($this->table)
 			{
-				$strSql.= $this->table.' SET ';
+				$strSql.= '`'.$this->table.'` SET ';
 			}else{
 				return false;
 			}
@@ -781,7 +781,7 @@ class DB
 
 		if($this->table)
 		{
-			$strSql.= $this->table.' ';
+			$strSql.= '`'.$this->table.'` ';
 		}else{
 			return false;
 		}
