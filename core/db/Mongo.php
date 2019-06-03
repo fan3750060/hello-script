@@ -190,24 +190,24 @@ class Mongo
             //排序
             $options['sort'] = isset($where['sort']) && $where['sort'] ? $where['sort'] : array('id' => -1);
 
-            $limit = isset($where['rows']) && $where['rows'] ? $where['rows'] : 0; //返回条数
+            $limit = isset($where['size']) && $where['size'] ? $where['size'] : 0; //返回条数
 
-            if (isset($where['rows'])) {
-                unset($where['rows']);
+            if (isset($where['size'])) {
+                unset($where['size']);
             }
 
-            if (isset($where['page']) && $where['page']) {
-                $size = $where['page'];
+            if (isset($where['start']) && $where['start']) {
+                $start = $where['start'];
 
-                unset($where['page']);
+                unset($where['start']);
 
                 $options['limit'] = (int) $limit;
 
-                $options['skip'] = (int) $size;
+                $options['skip'] = (int) $start;
             } else {
 
-                if (isset($where['page'])) {
-                    unset($where['page']);
+                if (isset($where['start'])) {
+                    unset($where['start']);
                 }
 
                 $options['limit'] = (int) $limit;
@@ -260,7 +260,7 @@ class Mongo
             $result = $this->mongo->executeCommand($this->dbname, $command, new \MongoDB\Driver\ReadPreference(\MongoDB\Driver\ReadPreference::RP_SECONDARY_PREFERRED));
    
             return $result->toArray()[0]->n;
-            
+
         } catch (MongoException $e) {
             $this->throwError($e->getMessage());
         }
