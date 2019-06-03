@@ -94,4 +94,26 @@ return [
         //前缀
         'prefix'            => 'redis',
     ],
+
+    /**************** mongo配置 ****************/ 
+    'mongo' => [
+        // 连接地址
+        'hostname'          =>  '127.0.0.1',
+
+        //端口
+        'hostport'          => '27017',
+
+        //库名称
+        'dbname'            => 'Development',
+
+        //用户
+        'username'          => 'root',
+
+        //密码
+        'password'          => 'root',
+
+        //audb
+        'authdb'            => 'admin',
+
+    ],
 ];

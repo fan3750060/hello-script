@@ -257,6 +257,31 @@ Author : fan3750060@163.com
 		$d = Cache::drive('redis')->delete('key');
 ~~~
 
+# Mongo操作
+~~~
+	//加载配置(database.php中可配置多台mongo,使用config加载不同配置即可)
+	$mongoconfig = config('mongo');
+
+	//创建mongo对象
+	$mongo = Mongo::getInstance($mongoconfig['hostname'],$mongoconfig['hostport'],$mongoconfig['dbname'],$mongoconfig['username'],$mongoconfig['password'],$mongoconfig['authdb']);
+
+	//插入
+	$result = $mongo->insert('test',['name'=>'test']);
+	var_dump($result);
+
+	//更新
+	$result = $mongo->update('test',['username'=>'admin'],['name' => 'admin user update2']);
+	var_dump($result);
+
+	//查询
+	$result = $mongo->find('test',['name'=>'test']);
+	var_dump($result);
+
+	//总数量
+	$result = $mongo->getCount('test',['username'=>'admin']);
+	var_dump($result);
+	
+~~~
 
 # 命令行参数接收
 ~~~
