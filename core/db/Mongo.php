@@ -222,7 +222,6 @@ class Mongo
             $arr = [];
             foreach ($result as $id => $val) {
                 $val        = self::object2array($val);
-                $val['_id'] = $val['_id']['oid'];
                 $arr[]      = $val;
             }
             return $arr;
