@@ -180,7 +180,7 @@ Author : fan3750060@163.com
 
 		$limit = [0,10];
 		$group = ['id','sex'];
-		$result = DB::table('表名')->where($where)->limit($limit)->select();
+		$result = DB::table('表名')->where($where)->order($order)->group($group)->limit($limit)->select();
 
 	插入数据
 		$data = array();
