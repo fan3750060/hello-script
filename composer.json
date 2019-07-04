@@ -11,7 +11,8 @@
     "homepage": "https://github.com/fan3750060/hello-script",
     "license": "MIT",
     "require": {
-        "php": ">=5.5"
+        "php": ">=5.5",
+        "vlucas/phpdotenv": "^3.4"
     },
     "authors": [
         {

@@ -300,6 +300,10 @@ Author : fan3750060@163.com
 ~~~
 	$a = config(); //获取全部配置
 	$b = config('cache'); //根据keyh获取配置
+
+	ENV读取
+	env('DB_CONNECTION','mysql'); 
+	//读取.env配置(使用前需将.env.example复制成.env), 参数1: key, 参数2:默认值,当key不存在时返回参数2
 ~~~
 
 # 引入类包

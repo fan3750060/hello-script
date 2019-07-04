@@ -58,11 +58,11 @@ class Mongo
      *
      * @return Object
      */
-    public static function getInstance($mongo_host, $mongo_port, $mongo_dbname, $mongo_user, $mongo_password, $authdb)
+    public static function getInstance($mongo_host, $mongo_port, $mongo_dbname, $mongo_user, $mongo_password, $authdb,$reconnection = false)
     {
         $token = $mongo_host . $mongo_port;
 
-        if (array_key_exists($token, self::$instance_token)) {
+        if (array_key_exists($token, self::$instance_token) && !$reconnection) {
             if (false == (self::$instance_token[$token] instanceof self)) {
                 self::$_instance = new self($mongo_host, $mongo_port, $mongo_dbname, $mongo_user, $mongo_password, $authdb);
             } else {

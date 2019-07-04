@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitedbc2beedbd021906fa7cbe75839f161
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'c' => 
         array (
@@ -14,6 +18,14 @@ class ComposerStaticInitedbc2beedbd021906fa7cbe75839f161
         'a' => 
         array (
             'app\\' => 4,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
         ),
     );
 
@@ -26,6 +38,24 @@ class ComposerStaticInitedbc2beedbd021906fa7cbe75839f161
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PhpOption\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoption/phpoption/src',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -33,6 +63,7 @@ class ComposerStaticInitedbc2beedbd021906fa7cbe75839f161
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitedbc2beedbd021906fa7cbe75839f161::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitedbc2beedbd021906fa7cbe75839f161::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitedbc2beedbd021906fa7cbe75839f161::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
